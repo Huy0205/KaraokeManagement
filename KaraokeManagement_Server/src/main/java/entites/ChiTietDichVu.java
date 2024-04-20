@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +23,11 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "CHITIETDICHVU")
+
+@NamedQueries({
+		@NamedQuery(name = "ChiTietDichVu.findByMaHoaDon", query = "SELECT ct FROM ChiTietDichVu ct WHERE ct.hoaDon.maHoaDon = :maHD") 
+})
+
 public class ChiTietDichVu implements Serializable{
 	@Id
 	@ManyToOne
