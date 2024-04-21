@@ -12,6 +12,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
+
 @DiscriminatorValue("CHITIETPHIEUDATPHONG")
 
 @NamedQueries({
