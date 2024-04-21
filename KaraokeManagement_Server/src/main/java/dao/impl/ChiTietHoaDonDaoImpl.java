@@ -49,4 +49,18 @@ public class ChiTietHoaDonDaoImpl extends UnicastRemoteObject implements ChiTiet
 		String jpql = "SELECT c FROM ChiTietHoaDon c WHERE c.hoaDon.khachHang.maKH = :maKH";
 		return em.createQuery(jpql, ChiTietHoaDon.class).setParameter("maKH", maKH).getResultList();
 	}
+	
+	public boolean xoaChiTietHoaDonTheoMaHD(String maHD) throws RemoteException {
+		EntityTransaction tr = em.getTransaction();
+		try {
+			tr.begin();
+			em.createNamedQuery("ChiTietHoaDon.deleteByMaHoaDon").setParameter("maHD", maHD).executeUpdate();
+			tr.commit();
+			return true;
+		} catch (Exception e) {
+			tr.rollback();
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

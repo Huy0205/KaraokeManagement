@@ -4,7 +4,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
-public interface ChiTietPhieuDatPhongCho extends Remote{
+import entites.ChiTietPhieuDatPhongCho;
+
+public interface ChiTietPhieuDatPhongChoDAO extends Remote {
 	public boolean themChiTietPhieuDatPhongCho(ChiTietPhieuDatPhongCho ct) throws RemoteException;
     public boolean xoaChiTietPhieuDatPhongCho(String maPhieuDatPhongCho) throws RemoteException;
     public List<ChiTietPhieuDatPhongCho> timTatCacPhieuDatPhongCho() throws RemoteException;

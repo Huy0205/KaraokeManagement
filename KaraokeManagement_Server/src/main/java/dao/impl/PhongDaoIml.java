@@ -11,10 +11,10 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-public class PhongIml extends UnicastRemoteObject implements PhongDAO {
+public class PhongDaoIml extends UnicastRemoteObject implements PhongDAO {
     private static final long serialVersionUID = 1L;
     private final EntityManager em;
-    public PhongIml(String persistenceUnit) throws RemoteException {
+    public PhongDaoIml(String persistenceUnit) throws RemoteException {
         this.em = Persistence.createEntityManagerFactory(persistenceUnit).createEntityManager();
     }
     @Override
