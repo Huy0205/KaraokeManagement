@@ -2,10 +2,7 @@ package entites;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +16,10 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "LOAIPHONG")
+@NamedQueries({
+		@NamedQuery(name = "LoaiPhong.findAll", query = "SELECT lp FROM LoaiPhong lp"),
+		@NamedQuery(name="LoaiPhong.findByID", query="SELECT lp FROM LoaiPhong lp WHERE lp.maLoaiPhong = :maLoaiPhong")
+})
 public class LoaiPhong implements Serializable {
 	@Id
 	@Column(name = "MALOAIPHONG", columnDefinition = "varchar(10)")

@@ -12,7 +12,7 @@
 				value="jdbc:mariadb://localhost:3306/karaoke?createDatabaseIfNotExist=true" />
 			<property name="jakarta.persistence.jdbc.user" value="root" />
 			<property name="jakarta.persistence.jdbc.password"
-				value="password" />
+				value="sapassword" />
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MariaDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />

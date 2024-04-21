@@ -7,12 +7,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-import dao.ChiTietDichVuDAO;
-import dao.ChiTietHoaDonDAO;
-import dao.HoaDonDAO;
-import dao.impl.ChiTietDichVuDaoImpl;
-import dao.impl.ChiTietHoaDonDaoImpl;
-import dao.impl.HoaDonDaoIml;
+import dao.*;
+import dao.impl.*;
 
 public class Server {
 	private static final String URL = "rmi://localhost:2024/";
@@ -27,13 +23,20 @@ public class Server {
 			ChiTietHoaDonDAO chiTietHoaDonDAO = new ChiTietHoaDonDaoImpl(PERSISTENCE_UNIT_NAME);
 
 			// Mấy ô điền tiếp mấy cái mình làm vào đây
-
+			LoaiPhongDAO loaiPhongDAO = new LoaiPhongIml(PERSISTENCE_UNIT_NAME);
+			PhieuDatDAO phieuDatDAO = new PhieuDatIml(PERSISTENCE_UNIT_NAME);
+			PhongDAO phongDAO = new PhongIml(PERSISTENCE_UNIT_NAME);
+			// Mấy ô điền tiếp mấy cái mình làm vào đây
 			LocateRegistry.createRegistry(2024);
 
 			context.bind(URL + "HoaDonDAO", hoaDonDAO);
 			context.bind(URL + "ChiTietDichVuDAO", chiTietDichVuDAO);
 			context.bind(URL + "ChiTietHoaDonDAO", chiTietHoaDonDAO);
 
+			// Mấy ô điền tiếp mấy cái mình làm vào đây
+			context.bind(URL + "LoaiPhongDAO", loaiPhongDAO);
+			context.bind(URL + "PhieuDatDAO", phieuDatDAO);
+			context.bind(URL + "PhongDAO", phongDAO);
 			// Mấy ô điền tiếp mấy cái mình làm vào đây
 
 			System.out.println("Server is running...");

@@ -2,12 +2,7 @@ package entites;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +16,11 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "PHONG")
+@NamedQueries({
+		@NamedQuery(name = "Phong.findAll", query = "SELECT p FROM Phong p JOIN p.loaiPhong lp"),
+		@NamedQuery(name = "Phong.findById", query = "SELECT p FROM Phong p JOIN p.loaiPhong lp WHERE p.maPhong = :maPhong"),
+		@NamedQuery(name = "Phong.findTrangThai", query = "SELECT p.trangThai FROM Phong p"),
+})
 public class Phong implements Serializable {
 	@Id
 	@Column(name = "MAPHONG", columnDefinition = "varchar(10)")
@@ -36,4 +36,8 @@ public class Phong implements Serializable {
 	private int sucChua;
 	@Column(name = "DONGIA", columnDefinition = "double", nullable = false)
 	private double DonGia;
+	public void setTrangThai(String trangThai) {
+		// TODO Auto-generated method stub
+		
+	}
 }

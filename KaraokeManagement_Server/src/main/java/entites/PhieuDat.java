@@ -4,13 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +18,10 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "PHIEUDAT")
+@NamedQueries({
+		@NamedQuery(name = "PhieuDat.findAll", query = "SELECT pd FROM PhieuDat pd"),
+		@NamedQuery(name = "PhieuDat.findById", query = "SELECT pd FROM PhieuDat pd WHERE pd.maPhieuDat = :maPhieuDat")
+})
 public class PhieuDat implements Serializable {
 	@Id
 	@Column(name = "MAPHIEUDAT", columnDefinition = "varchar(10)")
