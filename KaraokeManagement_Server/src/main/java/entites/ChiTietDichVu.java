@@ -10,25 +10,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @Entity
 @Table(name = "CHITIETDICHVU")
 
 @NamedQueries({
-		@NamedQuery(name = "ChiTietDichVu.findByMaHoaDon", query = "SELECT ct FROM ChiTietDichVu ct WHERE ct.hoaDon.maHoaDon = :maHD") 
-})
+		@NamedQuery(name = "ChiTietDichVu.findByMaHoaDon", query = "SELECT ct FROM ChiTietDichVu ct WHERE ct.hoaDon.maHoaDon = :maHD") })
 
-public class ChiTietDichVu implements Serializable{
+public class ChiTietDichVu implements Serializable {
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "MAHOADON", referencedColumnName = "MAHOADON")
@@ -39,4 +28,43 @@ public class ChiTietDichVu implements Serializable{
 	private DichVu dichVu;
 	@Column(name = "SOLUONG", columnDefinition = "int")
 	private int soLuong;
+
+	public HoaDon getHoaDon() {
+		return hoaDon;
+	}
+
+	public void setHoaDon(HoaDon hoaDon) {
+		this.hoaDon = hoaDon;
+	}
+
+	public DichVu getDichVu() {
+		return dichVu;
+	}
+
+	public void setDichVu(DichVu dichVu) {
+		this.dichVu = dichVu;
+	}
+
+	public int getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	public ChiTietDichVu() {
+	}
+
+	public ChiTietDichVu(HoaDon hoaDon, DichVu dichVu, int soLuong) {
+		this.hoaDon = hoaDon;
+		this.dichVu = dichVu;
+		this.soLuong = soLuong;
+	}
+
+	@Override
+	public String toString() {
+		return "ChiTietDichVu [hoaDon=" + hoaDon + ", dichVu=" + dichVu + ", soLuong=" + soLuong + "]";
+	}
+
 }

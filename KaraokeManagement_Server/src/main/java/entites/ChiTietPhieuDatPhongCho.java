@@ -7,17 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
 @Entity
 @Table(name = "CHITIETPHIEUDATPHONGCHO")
 public class ChiTietPhieuDatPhongCho implements Serializable {
@@ -29,4 +19,34 @@ public class ChiTietPhieuDatPhongCho implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "MAPHONG", referencedColumnName = "MAPHONG")
 	private Phong phong;
+
+	public PhieuDatPhongCho getPhieuDatPhongCho() {
+		return phieuDatPhongCho;
+	}
+
+	public void setPhieuDatPhongCho(PhieuDatPhongCho phieuDatPhongCho) {
+		this.phieuDatPhongCho = phieuDatPhongCho;
+	}
+
+	public Phong getPhong() {
+		return phong;
+	}
+
+	public void setPhong(Phong phong) {
+		this.phong = phong;
+	}
+
+	public ChiTietPhieuDatPhongCho() {
+	}
+
+	public ChiTietPhieuDatPhongCho(PhieuDatPhongCho phieuDatPhongCho, Phong phong) {
+		this.phieuDatPhongCho = phieuDatPhongCho;
+		this.phong = phong;
+	}
+
+	@Override
+	public String toString() {
+		return "ChiTietPhieuDatPhongCho [phieuDatPhongCho=" + phieuDatPhongCho + ", phong=" + phong + "]";
+	}
+
 }

@@ -9,10 +9,10 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
-public class PhieuDatIml extends UnicastRemoteObject implements PhieuDatDAO {
+public class PhieuDatDaoIml extends UnicastRemoteObject implements PhieuDatDAO {
     private static final long serialVersionUID = 1L;
     private final EntityManager em;
-    public PhieuDatIml(String persistenceUnit) throws RemoteException {
+    public PhieuDatDaoIml(String persistenceUnit) throws RemoteException {
         this.em = Persistence.createEntityManagerFactory(persistenceUnit).createEntityManager();
     }
     public List<PhieuDat> getALLPhieuDat() throws RemoteException {
