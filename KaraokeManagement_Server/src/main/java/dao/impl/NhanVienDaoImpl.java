@@ -31,6 +31,13 @@ public class NhanVienDaoImpl extends UnicastRemoteObject implements NhanVienDAO 
 	 * @param matKhau
 	 * @return NhanVien, null if not found
 	 */
+	public NhanVien timKiemTheoDanhSachNhanVien(String ma, String ten, String sdt, String cccd, String diachi,
+			String chucVu) throws RemoteException {
+		// TODO Auto-generated method stub
+		return em.createNamedQuery("NhanVien.findByAll", NhanVien.class).setParameter("maNV", ma)
+				.setParameter("tenNV", ten).setParameter("sdt", sdt).setParameter("cmnd", cccd)
+				.setParameter("diaChi", diachi).setParameter("chucVu", chucVu).getSingleResult();
+	}
 	@Override
 	public NhanVien timKiemNhanVienTheoTaiKhoan(String taiKhoan, String matKhau) throws RemoteException {
 		try {
@@ -165,4 +172,16 @@ public class NhanVienDaoImpl extends UnicastRemoteObject implements NhanVienDAO 
 		}
 		return false;
 	}
+
+	@Override
+	public NhanVien timKiemTheoDanhSachNhanVien(String ma, String ten, String sdt, String cccd, String diachi,
+			String chucVu, String chucVu2) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+	
+
 }

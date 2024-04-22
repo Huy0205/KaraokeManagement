@@ -38,5 +38,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/KaraokeManagement_Server"/>
+	<classpathentry kind="lib" path="lib/lib.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

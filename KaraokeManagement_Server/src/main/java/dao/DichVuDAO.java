@@ -19,5 +19,5 @@ public interface DichVuDAO extends Remote {
 	List<DichVu> search(String giaTriTimKiem) throws RemoteException;
 
 	boolean xoaDichVu(String maDV) throws RemoteException;
-
+   public List<DichVu> getAllDichVu() throws RemoteException;
 }

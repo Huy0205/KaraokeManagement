@@ -287,7 +287,7 @@ public class TrangChu extends JFrame implements ActionListener {
 		mntmTroGiup.addActionListener(this);
 
 		nvHienTai = nv;
-		phanQuyenChucNang(nv);
+//		phanQuyenChucNang(nv);
 
 	}
 
@@ -313,159 +313,165 @@ public class TrangChu extends JFrame implements ActionListener {
 
 	}
 
-	public void ChonKhachHang() {
-		this.thayDoiPanelChinh(new QLKhachHang(), mntmKhachHang);
-
-	}
-
-	public void chonTrangChu() {
-		this.thayDoiPanelChinh(pnlTrangChu, mntmTrangChu);
-	}
-
-	public void chonQLNhanVien() {
-		this.thayDoiPanelChinh(new QLNhanVien(), mntmNhanVien);
-	}
-
-	public void chonQLDichVu() {
-		this.thayDoiPanelChinh(new QLDichVu(), mntmDichVu);
-	}
-
-	public void chonQLPhong() {
-		this.thayDoiPanelChinh(new QLPhong(), mntmPhongHat);
-	}
-
-	public void chonTimKiemPhieuDatPhong() {
-		this.thayDoiPanelChinh(new TimKiemPhieuDatPhong(nvHienTai), mntmTimKiemPDP);
-	}
-
-	public void chonTimKiemDichVu() {
-		this.thayDoiPanelChinh(new timKiemDichVu(nvHienTai), mntmTimKiemDV);
-	}
-
-	public void chonTimKiemNhanVien() {
-		this.thayDoiPanelChinh(new TimKiemNhanVien(), mntmTimKiemNV);
-	}
-
-	public void chonTimKiemKH() {
-		this.thayDoiPanelChinh(new timKiemKhachHang(), mntmTimKiemKH);
-	}
-
-	public void chonTimKiemPhong() {
-		this.thayDoiPanelChinh(new TimKiemPhong(), mntmTimKiemPhong);
-	}
-
-	public void chonTimKiemHoaDon() {
-		this.thayDoiPanelChinh(new TimKiemHoaDon(), mntmTimKiemHoaDon);
-	}
-
-	public void chonTimKiemTaiKhoan() {
-		this.thayDoiPanelChinh(new TimKiemTaiKhoan(), mntmTimKiemTK);
-	}
-
-	public void chonTaiKhoan() {
-		this.thayDoiPanelChinh(new GD_ThongTinTaiKhoan(nvHienTai), mntmTaiKhoan);
-	}
-
-	public void windowClosing(WindowEvent e) {
-		dispose();
-	}
-
-	public void ChonDatPhong() {
-		this.thayDoiPanelChinh(new QLDatPhong(nvHienTai), mntmDatPhongHat);
-	}
-
-	public void chonThongKeDoanhThu() {
-		this.thayDoiPanelChinh(new ThongKeDoanhThu(), mntmTKDoanhThu);
-	}
-
-	public void chonThongKeKH() {
-		this.thayDoiPanelChinh(new ThongKeKhachHang(), mntmTKKhachHang);
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Object o = e.getSource();
-		if (o.equals(mntmKhachHang)) {
-			ChonKhachHang();
-		} else if (o.equals(mntmTrangChu)) {
-			chonTrangChu();
-		} else if (o.equals(mntmNhanVien)) {
-			if (nvHienTai.getChucVu().equals("QL")) {
-				chonQLNhanVien();
-			} else {
-				JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập chức năng này");
-			}
-
-		} else if (o.equals(mntmDichVu)) {
-			chonQLDichVu();
-		} else if (o.equals(mntmPhongHat)) {
-			chonQLPhong();
-		} else if (o.equals(mntmTimKiemPDP)) {
-			chonTimKiemPhieuDatPhong();
-		} else if (o.equals(mntmTimKiemDV)) {
-			chonTimKiemDichVu();
-		} else if (o.equals(mntmTimKiemNV)) {
-			chonTimKiemNhanVien();
-		} else if (o.equals(mntmTimKiemKH)) {
-			chonTimKiemKH();
-		} else if (o.equals(mntmTimKiemPhong)) {
-			chonTimKiemPhong();
-		} else if (o.equals(mntmTimKiemHoaDon)) {
-			chonTimKiemHoaDon();
-		} else if (o.equals(mntmTimKiemTK)) {
-			chonTimKiemTaiKhoan();
-		} else if (o.equals(mntmTaiKhoan)) {
-			chonTaiKhoan();
-		} else if (o.equals(mntmDatPhongHat)) {
-			ChonDatPhong();
-		} else if (o.equals(mntmTKDoanhThu)) {
-			chonThongKeDoanhThu();
-		} else if (o.equals(mntmTKKhachHang)) {
-			chonThongKeKH();
-		}
-
-		else if (o.equals(mntmDangXuat)) {
-			if (JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng xuất ?", null,
-					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-//				connectDB.getInstance().disConnect();
-				Login frame = null;
-				try {
-					frame = new Login();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-
-				frame.setVisible(true);
-				frame.setLocationRelativeTo(null);
-				;
-				dispose();
-			}
-		} else if (o.equals(mntmThoat)) {
-			System.exit(0);
-		} else if (o.equals(mntmTroGiup)) {
-			String url = "";
-			url = System.getProperty("user.dir") + "\\help\\HDSD.pdf";
-			File file = new File(url);
-			Desktop dt = Desktop.getDesktop();
-			try {
-				dt.open(file);
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
-	private void phanQuyenChucNang(NhanVien nv) {
-		if (!nv.getChucVu().equals("QL")) {
-			/*
-			 * nếu không phải quản lí sẽ remove mấy chức năng này
-			 */
-			mnDanhMuc.remove(mntmNhanVien);
-			mnDanhMuc.remove(mntmDichVu);
-			mnDanhMuc.remove(mntmPhongHat);
-			mnTimKiem.remove(mntmTimKiemNV);
-			mnTimKiem.remove(mntmTimKiemTK);
-		}
-	}
+//	public void ChonKhachHang() {
+//		this.thayDoiPanelChinh(new QLKhachHang(), mntmKhachHang);
+//
+//	}
+//
+//	public void chonTrangChu() {
+//		this.thayDoiPanelChinh(pnlTrangChu, mntmTrangChu);
+//	}
+//
+//	public void chonQLNhanVien() {
+//		this.thayDoiPanelChinh(new QLNhanVien(), mntmNhanVien);
+//	}
+//
+//	public void chonQLDichVu() {
+//		this.thayDoiPanelChinh(new QLDichVu(), mntmDichVu);
+//	}
+//
+//	public void chonQLPhong() {
+//		this.thayDoiPanelChinh(new QLPhong(), mntmPhongHat);
+//	}
+//
+//	public void chonTimKiemPhieuDatPhong() {
+//		this.thayDoiPanelChinh(new TimKiemPhieuDatPhong(nvHienTai), mntmTimKiemPDP);
+//	}
+//
+//	public void chonTimKiemDichVu() {
+//		this.thayDoiPanelChinh(new timKiemDichVu(nvHienTai), mntmTimKiemDV);
+//	}
+//
+//	public void chonTimKiemNhanVien() {
+//		this.thayDoiPanelChinh(new TimKiemNhanVien(), mntmTimKiemNV);
+//	}
+//
+//	public void chonTimKiemKH() {
+//		this.thayDoiPanelChinh(new timKiemKhachHang(), mntmTimKiemKH);
+//	}
+//
+//	public void chonTimKiemPhong() {
+//		this.thayDoiPanelChinh(new TimKiemPhong(), mntmTimKiemPhong);
+//	}
+//
+//	public void chonTimKiemHoaDon() {
+//		this.thayDoiPanelChinh(new TimKiemHoaDon(), mntmTimKiemHoaDon);
+//	}
+//
+//	public void chonTimKiemTaiKhoan() {
+//		this.thayDoiPanelChinh(new TimKiemTaiKhoan(), mntmTimKiemTK);
+//	}
+//
+//	public void chonTaiKhoan() {
+//		this.thayDoiPanelChinh(new GD_ThongTinTaiKhoan(nvHienTai), mntmTaiKhoan);
+//	}
+//
+//	public void windowClosing(WindowEvent e) {
+//		dispose();
+//	}
+//
+//	public void ChonDatPhong() {
+//		this.thayDoiPanelChinh(new QLDatPhong(nvHienTai), mntmDatPhongHat);
+//	}
+//
+//	public void chonThongKeDoanhThu() {
+//		this.thayDoiPanelChinh(new ThongKeDoanhThu(), mntmTKDoanhThu);
+//	}
+//
+//	public void chonThongKeKH() {
+//		this.thayDoiPanelChinh(new ThongKeKhachHang(), mntmTKKhachHang);
+//	}
+//
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//		Object o = e.getSource();
+//		if (o.equals(mntmKhachHang)) {
+//			ChonKhachHang();
+//		} else if (o.equals(mntmTrangChu)) {
+//			chonTrangChu();
+//		} else if (o.equals(mntmNhanVien)) {
+//			if (nvHienTai.getChucVu().equals("QL")) {
+//				chonQLNhanVien();
+//			} else {
+//				JOptionPane.showMessageDialog(this, "Bạn không có quyền truy cập chức năng này");
+//			}
+//
+//		} else if (o.equals(mntmDichVu)) {
+//			chonQLDichVu();
+//		} else if (o.equals(mntmPhongHat)) {
+//			chonQLPhong();
+//		} else if (o.equals(mntmTimKiemPDP)) {
+//			chonTimKiemPhieuDatPhong();
+//		} else if (o.equals(mntmTimKiemDV)) {
+//			chonTimKiemDichVu();
+//		} else if (o.equals(mntmTimKiemNV)) {
+//			chonTimKiemNhanVien();
+//		} else if (o.equals(mntmTimKiemKH)) {
+//			chonTimKiemKH();
+//		} else if (o.equals(mntmTimKiemPhong)) {
+//			chonTimKiemPhong();
+//		} else if (o.equals(mntmTimKiemHoaDon)) {
+//			chonTimKiemHoaDon();
+//		} else if (o.equals(mntmTimKiemTK)) {
+//			chonTimKiemTaiKhoan();
+//		} else if (o.equals(mntmTaiKhoan)) {
+//			chonTaiKhoan();
+//		} else if (o.equals(mntmDatPhongHat)) {
+//			ChonDatPhong();
+//		} else if (o.equals(mntmTKDoanhThu)) {
+//			chonThongKeDoanhThu();
+//		} else if (o.equals(mntmTKKhachHang)) {
+//			chonThongKeKH();
+//		}
+//
+//		else if (o.equals(mntmDangXuat)) {
+//			if (JOptionPane.showConfirmDialog(null, "Bạn có muốn đăng xuất ?", null,
+//					JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+////				connectDB.getInstance().disConnect();
+//				Login frame = null;
+//				try {
+//					frame = new Login();
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+//
+//				frame.setVisible(true);
+//				frame.setLocationRelativeTo(null);
+//				;
+//				dispose();
+//			}
+//		} else if (o.equals(mntmThoat)) {
+//			System.exit(0);
+//		} else if (o.equals(mntmTroGiup)) {
+//			String url = "";
+//			url = System.getProperty("user.dir") + "\\help\\HDSD.pdf";
+//			File file = new File(url);
+//			Desktop dt = Desktop.getDesktop();
+//			try {
+//				dt.open(file);
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+//		}
+//	}
+//
+//	private void phanQuyenChucNang(NhanVien nv) {
+//		if (!nv.getChucVu().equals("QL")) {
+//			/*
+//			 * nếu không phải quản lí sẽ remove mấy chức năng này
+//			 */
+//			mnDanhMuc.remove(mntmNhanVien);
+//			mnDanhMuc.remove(mntmDichVu);
+//			mnDanhMuc.remove(mntmPhongHat);
+//			mnTimKiem.remove(mntmTimKiemNV);
+//			mnTimKiem.remove(mntmTimKiemTK);
+//		}
+//	}
 }

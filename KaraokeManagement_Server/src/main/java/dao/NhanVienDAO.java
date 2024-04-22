@@ -1,6 +1,7 @@
 package dao;
 
 import java.rmi.Remote;
+import java.util.ArrayList;
 import java.util.List;
 import entites.NhanVien;
 import java.rmi.RemoteException;
@@ -27,5 +28,10 @@ public interface NhanVienDAO extends Remote {
 	
 	public NhanVien	getNhanVienTheoTaiKhoanVaSDT(String tk, String sdt) throws RemoteException;
 	
-	public boolean capNhapMatKhau(String maukhau, String maNV) throws RemoteException;
+    public NhanVien timKiemTheoDanhSachNhanVien(String ma , String ten , String sdt, String cccd, String diachi, String chucVu, String chucVu2) throws RemoteException;
+
+	boolean capNhapMatKhau(String maukhau, String maNV) throws RemoteException;
+
+	NhanVien timKiemTheoDanhSachNhanVien(String ma, String ten, String sdt, String cccd, String diachi, String chucVu)
+			throws RemoteException;
 }

@@ -119,7 +119,7 @@ public class QuenMatKhau extends JFrame implements ActionListener {
 					email.sendMail(emailToAddress, NewPassWord);
 					ss.set("content", NewPassWord);
 					ss.set("email", emailToAddress);
-					nhanVienDAO.capNhapMatKhau(NewPassWord, nv.getMaNV());
+					nhanVienDAO.capNhatTaiKhoanMatKhauChoNhanVien(emailToAddress, taiKhoan, sdt);
 					this.dispose();
 				} catch (RemoteException e1) {
 					e1.printStackTrace();

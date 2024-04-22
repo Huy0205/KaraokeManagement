@@ -22,7 +22,11 @@ import jakarta.persistence.Table;
 		@NamedQuery(name = "DichVu.themDichVu", query = "INSERT INTO DichVu (maDV, tenDichVu, donGia, donVi, soLuongTonKho) "
 				+ "VALUES (:maDV, :tenDichVu, :donGia, :donVi, :soLuongTonKho)"),
 		@NamedQuery(name = "DichVu.updateSoLuongTonDV", query = "UPDATE DichVu dv SET dv.soLuongTonKho = :soLuongTonKho "
-				+ "WHERE dv.maDV = :maDV") })
+				+ "WHERE dv.maDV = :maDV") ,
+		
+      // tìm tất cả dịch vụ
+		@NamedQuery(name = "DichVu.findAll", query = "SELECT dv FROM DichVu dv"),
+})
 
 public class DichVu implements Serializable {
 	@Id

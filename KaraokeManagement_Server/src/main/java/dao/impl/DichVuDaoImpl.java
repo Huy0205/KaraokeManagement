@@ -137,4 +137,10 @@ public class DichVuDaoImpl extends UnicastRemoteObject implements DichVuDAO {
 
 	}
 
+	@Override
+	public List<DichVu> getAllDichVu() throws RemoteException {
+		// TODO Auto-generated method stub
+		return em.createNamedQuery("DichVu.findAll", DichVu.class).getResultList();
+	}
+
 }

@@ -18,7 +18,9 @@ import jakarta.persistence.Table;
 		@NamedQuery(name = "NhanVien.findByTenNV", query = "SELECT nv FROM NhanVien nv WHERE nv.tenNV LIKE :tenNV"),
 		@NamedQuery(name = "NhanVien.findBySDT", query = "SELECT nv FROM NhanVien nv WHERE nv.sdt = :sdt"),
 		@NamedQuery(name = "NhanVien.findByChucVu", query = "SELECT nv FROM NhanVien nv WHERE nv.chucVu = :chucVu"),
-		@NamedQuery(name = "NhanVien.findByTaiKhoanAndSDT", query = "SELECT nv FROM NhanVien nv WHERE nv.taiKhoan = :taiKhoan AND nv.sdt = :sdt") })
+		@NamedQuery(name = "NhanVien.findByTaiKhoanAndSDT", query = "SELECT nv FROM NhanVien nv WHERE nv.taiKhoan = :taiKhoan AND nv.sdt = :sdt"),
+        //tìm kiếm nhân viên  với tất cả thông tin còn chức vụ chỉ mã chức vụ thôi
+		@NamedQuery(name = "NhanVien.findByAll", query = "SELECT nv FROM NhanVien nv WHERE nv.maNV LIKE :maNV AND nv.tenNV LIKE :tenNV AND nv.sdt LIKE :sdt AND nv.cmnd LIKE :cmnd AND nv.gioiTinh LIKE :gt AND nv.diaChi LIKE :diaChi AND nv.chucVu LIKE :chucVu") })
 
 public class NhanVien implements Serializable {
 	@Id
